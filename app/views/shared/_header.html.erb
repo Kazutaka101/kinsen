@@ -1,0 +1,9 @@
+<% if current_member.present? %>
+    <%= link_to "Logout", session_path(session[:member_id]), method: :delete  %>
+    
+<% else %>
+    <%= render "shared/login_form" %>
+    <br>
+     <%= link_to "Signup", new_member_path %>
+     <hr>
+<% end %>

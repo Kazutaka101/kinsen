@@ -1,2 +1,44 @@
-<h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+<% @page_title = "Reservation" %>
+
+<% if current_member %>
+    <h1><%=@page_title %></h1>
+    <table class = "attr">
+    <%=form_for @reservation do |f| %>
+        
+        <tr>
+            <th><%= f.label :plan_id%></th>
+            <td><%= f.text_field :plan_id, value: params[:plan_id] %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :member_id %>
+            <td><%= f.text_field :member_id, value: session[:member_id] %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :type_id %></th>
+            <td><%= f.text_field :type_id %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :guest_count %>
+            <td><%= f.text_field :guest_count %>
+        </tr>
+        <tr>
+            <th><%= f.label :date_start %></th>
+            <td><%= f.date_select :date_start, use_month_numbers: true, discard_year: true %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :date_end %></th>
+            <td><%= f.date_select :date_end, use_month_numbers: true, discard_year: true %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :morning %></th>
+            <td><%= f.check_box :morning %></td>
+        </tr>
+</table>
+<div>
+    <%= f.submit "Reservation" %>
+</div>
+<% end %>
+<% else %>
+    <p>Please Login or Signup</p>
+<% end %>
+

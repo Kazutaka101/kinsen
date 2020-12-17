@@ -1,2 +1,3 @@
-<h1>Plans#show</h1>
-<p>Find me in app/views/plans/show.html.erb</p>
+<% @page_title = @plan.name %>
+<h1><%= @plan.name %></h1>
+<%= link_to "Reservation", new_reservation_path(plan_id: @plan.id) %>

@@ -1,2 +1,27 @@
-<h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
+<% @page_title = "Check reservations" %>
+<% if @reservations.present? %>
+
+  <% @reservations.each do |reservation|%>
+    <table>
+        <tr>
+            <th>Plan_id</th>
+            <td><%= reservation.plan_id %></td>
+        </tr>
+        <tr>
+            <th>guest_count</th>
+            <td><%= reservation.guest_count %>
+        </tr>
+        <tr>
+            <th>date_start</th>
+            <td><%= reservation.date_start %></td>
+        </tr>
+        <tr>
+            <th>date_end</th>
+            <td><%= reservation.date_end %></td>
+        </tr>
+    </table>
+    <br>
+    
+     <% end %> 
+
+<% end %>

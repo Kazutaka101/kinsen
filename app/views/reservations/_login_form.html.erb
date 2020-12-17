@@ -1,4 +1,6 @@
-<title>Kinsen - login</title>
+
+<%= @page_title = "Login" %>
+
 <%= form_tag :sessions, id:"login_form" do %>
     <div>
         <label>User Name</label>
@@ -9,6 +11,10 @@
         <input type = "password", name = "password">
     </div>
     <div>
+        <form action = <%= new_reservation_path %>>
         <input type = "submit" value = "Login">
+    
     </div>
+    <%= link_to "Signup" , new_member_path %>
+    
 <% end %>

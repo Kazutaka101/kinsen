@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kinsen</title>
+    <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id = "container">
+      <header>
+        <%= render "shared/header" %>
+      </header>
+        <%= yield %>
+    </div>
   </body>
 </html>

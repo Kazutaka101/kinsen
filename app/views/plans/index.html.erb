@@ -1,2 +1,17 @@
-<h1>Plans#index</h1>
-<p>Find me in app/views/plans/index.html.erb</p>
+<% @page_title = "Seach plan" %>
+<h1><%= @page_title %></h1>
+<%= form_tag :search_plans, method: :get, class: "search" do %>
+    <%= text_field_tag "q", params[:q] %>
+    <%= submit_tag "search" %>
+    <p>--------Checkbox here------------</p>
+<% end %>
+<% if @plans.present? %>
+    <table class="list">
+        <% @plans.each do |plan| %>
+        <tr>
+            <th><%= plan.name %></th>
+            <td><%= link_to "Detail", plan %><td>
+        </tr>
+        <% end %>
+    </table>
+<% end %>

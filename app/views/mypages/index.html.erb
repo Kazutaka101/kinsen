@@ -1,4 +1,30 @@
 <% if current_member %>
+    <% if @member.present? %>
+        <table>
+            <tr>
+                <td><%= @member.name %></td>
+            </tr>
+            <tr>
+                <td><%= @member.gender %>
+            </tr>
+            <tr>
+                <td><%= @member.telephone %>
+            </tr>                
+            <tr>
+                <td><%= @member.email %>
+            </tr>
+            <tr>
+                <td><%= @member.address %>
+            </tr>                
+            <tr>
+               <td><%= @member.birthday %>
+            </tr>
+        </table>
+        <%= link_to "Check reservation", reservation_path(session[:member_id]) %>
+    <% else %>
+       <%# error %>
+    <% end %>
+    
 <% else %>
-<%= render "login_form" %>
+    <p>Please login or Signup
 <% end %>
