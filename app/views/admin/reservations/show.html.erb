@@ -1,2 +1,53 @@
-<h1>Admin::Reservations#show</h1>
-<p>Find me in app/views/admin/reservations/show.html.erb</p>
+<% @page_title = "Admin: Check reservation" %>
+<h1><%= @page_title %></h1>
+<% if @reservations.present? %>
+
+  <% @reservations.each do |reservation|%>
+    <table>
+        <tr>
+            <td>member_id</td>
+            <td><%= reservation.member_id %></td>
+        </tr>
+        <tr>
+            <th>plan_id</th>
+            <td><%= reservation.plan_id %></td>
+        </tr>
+        <tr>
+            <th>type_id</th>
+            <td><%= reservation.type_id %></td>
+        <tr>
+            <th>guest_count</th>
+            <td><%= reservation.guest_count %>
+        </tr>
+        <tr>
+            <th>date_start</th>
+            <td><%= reservation.date_start %></td>
+        </tr>
+        <tr>
+            <th>date_end</th>
+            <td><%= reservation.date_end %></td>
+        </tr>
+        <td>
+            <%= link_to "Delete", admin_reservation_path(id: reservation.id, member_id: reservation.member_id), method: :delete, data: { confirm: "Are you sure delete this reservation?"} %>  
+
+
+        
+            <%
+=begin%>
+ <%= link_to "Delete", controller: "admin/reservations", action: "destroy", method: :delete, id: reservation.id, member_id: reservation.member_id %>  
+<%
+=end%>
+
+        </td>
+        <td>
+            <%= link_to "Update" %>
+        </td>
+        <td>
+            <%= link_to "Member" %>
+        </td>
+    </table>
+    <br>
+    <% end %> 
+    <%= render "shared/check_params" %>
+
+<% end %>

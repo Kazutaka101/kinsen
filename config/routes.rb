@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "top#index"
     resources :plans
+    resources :members, only: [:index]
     resources :dinners, except: [:edit, :update]
     resources :reservations, except: [:new, :create]
     resource :sessions, only: [:create, :destroy]

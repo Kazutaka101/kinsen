@@ -1,2 +1,36 @@
-<h1>Admin::Reservations#index</h1>
-<p>Find me in app/views/admin/reservations/index.html.erb</p>
+<% @title_page = "Admin: Reservation List" %>
+<h1><%= @page_title %></h1>
+<% @reservations.each do |reservation|%>
+    <table>
+        <tr>
+            <th>member_id</th>
+            <td><%= reservation.member_id %></td>
+        </tr>
+        <tr>
+            <th>plan_id</th>
+            <td><%= reservation.plan_id %></td>
+        </tr>
+        <tr>
+            <th>type_id</th>
+            <td><%= reservation.type_id %></td>
+        <tr>
+            <th>guest_count</th>
+            <td><%= reservation.guest_count %>
+        </tr>
+        <tr>
+            <th>date_start</th>
+            <td><%= reservation.date_start %></td>
+        </tr>
+        <tr>
+            <th>date_end</th>
+            <td><%= reservation.date_end %></td>
+        </tr>
+        <td><%= link_to "Detail", admin_reservation_path(reservation)%>
+     </table>
+     <hr>
+
+
+        
+
+<% end %>
+
