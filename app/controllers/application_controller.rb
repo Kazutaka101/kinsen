@@ -4,10 +4,32 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_member
     
-    # class LoginRequired < StandardError; end
-    # class Forbidden < StandardError; end
+    class LoginRequired < StandardError; end
+    class Forbidden < StandardError; end
+    rescue_from LoginRequired, with: :rescue_login_required
+    rescue_from Forbidden, with: :rescue_forbidden
 
-    # private def login_required
-    #     raise LoginRequired unless current_member
-    # end
+    private def login_required
+        raise LoginRequired unless current_member
+    end
+
+    private def rescue_bad_request(exception)
+        render "erroes/bad_request", status: 400, layout: "error", formats: [:html]
+    end
+
+    private def rescue_login_required(exception)
+        render "errors/login_required", status: 403, layout: "error", formats:[:html]
+    end
+
+    private def rescue_forbidden(exception)
+        render "erroes/forbidden", status: 403, layout: "error", formats: [:html]
+    end
+
+    private def rescue_not_found(exception)
+        render "errors/not_found", status: 404, layout: "error", formats: [:html]
+    end
+
+    private def rescue_internal_server_error(exception)
+        render "error/internal_server_error", status: 500, layout: "error", formats: [:html]
+    end
 end

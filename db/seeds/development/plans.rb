@@ -1,13 +1,12 @@
-#仮のシードデータ
-
-plans = ["Japanese-style room with bed plan", "All-you-can-eat Wagyu plan", "Seaside balcony plan", "Mountainside balcony plan"]
-0.upto(3) do |idx|
-    Plan.create(
-        name: plans[idx],
-        dinner_id: idx,
-        plan_start: "2020-10-1",
-        plan_end: "2020-12-31",
-        guest_max: 5,
-        guest_min: 2
-    )
+0.upto(9) do |idx|
+  p idx
+  Plan.create(
+    name: ("Plan" + idx.to_s),
+    dinner_id: idx,
+    plan_start: "2020/12/01",
+    plan_end: "2020/12/31",
+    guest_max: 6,
+    guest_min: 1,
+    type_id: 1
+  )
 end

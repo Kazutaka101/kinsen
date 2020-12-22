@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  #before_action :login_required
+  before_action :login_required
   def new
     @reservation = Reservation.new
     params[:plan_id]
@@ -15,7 +15,6 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    #@reservations = Reservation.find_by(member_id: session[:member_id])
     @reservations = Reservation.where(member_id: session[:member_id])
   end
 

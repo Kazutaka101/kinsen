@@ -10,12 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_123359) do
+ActiveRecord::Schema.define(version: 2020_12_22_081253) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer "plan_id", null: false
+    t.integer "type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_assignments_on_plan_id"
+    t.index ["type_id"], name: "index_assignments_on_type_id"
+  end
+
+  create_table "dinners", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "dish", null: false
+    t.integer "cost", null: false
+    t.float "kcal", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "name", null: false
     t.integer "gender"
-    t.integer "telephone", null: false
+    t.string "telephone", null: false
     t.string "email", null: false
     t.string "address", null: false
     t.date "birthday", null: false
@@ -25,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_123359) do
   end
 
   create_table "plans", force: :cascade do |t|
+    t.integer "type_id", null: false
     t.string "name", null: false
     t.integer "dinner_id", null: false
     t.date "plan_start", null: false
@@ -33,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_123359) do
     t.integer "guest_min", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["dinner_id"], name: "index_plans_on_dinner_id"
+    t.index ["type_id"], name: "index_plans_on_type_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -42,9 +63,39 @@ ActiveRecord::Schema.define(version: 2020_12_15_123359) do
     t.integer "guest_count", null: false
     t.date "date_start", null: false
     t.date "date_end", null: false
-    t.boolean "morning"
+    t.boolean "morning", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_reservations_on_member_id"
+    t.index ["plan_id"], name: "index_reservations_on_plan_id"
+    t.index ["type_id"], name: "index_reservations_on_type_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "about", null: false
+    t.integer "cost", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roomtypes", force: :cascade do |t|
+    t.integer "type_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_roomtypes_on_room_id"
+    t.index ["type_id"], name: "index_roomtypes_on_type_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.integer "plan_id"
+    t.string "name", null: false
+    t.integer "roomtype_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_types_on_plan_id"
+    t.index ["roomtype_id"], name: "index_types_on_roomtype_id"
   end
 
 end

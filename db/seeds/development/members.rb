@@ -1,15 +1,29 @@
-fnames = ["佐藤", "鈴木", "高橋", "田中"]
-gnames = ["太郎", "次郎", "花子"]
-names = %w(Taro Jiro Hana John Mike Sophy Bill Alex Mary Tom)
-0.upto(9) do |idx|
+#kinsentyokka
+require "csv"
+csv = CSV.read("personal_infomation.csv", {headers: true, encoding: Encoding::UTF_8})
+#p csv
+
+csv_size = csv.size
+
+p csv_size
+
+indices = (2..csv_size).to_a.sample(100)
+p indices
+
+p csv[1][10]
+
+0.upto(csv_size - 1) do |idx|
+  if indices.include?(idx)
+    p idx
+    p csv[idx][0].to_s
     Member.create(
-        name: "#{fnames[idx%4]} #{gnames[idx%3]}",
-        gender: [1, 1, 2][idx%3],
-        telephone: 123456789,
-        email: "#{names[idx]}@example.com",
-        address: "神奈川県川崎市多摩区東三田2-1-1",
-        birthday: "1981-12-01",
-        password: "kinsen!",
-        password_confirmation: "kinsen!"
+      name: csv[idx][0].to_s,
+      gender: (csv[idx][1]),
+      telephone: csv[idx][2].to_i,
+      email: csv[idx][3].to_s,
+      address: csv[idx][4].to_s << csv[idx][5].to_s << csv[idx][6].to_s << csv[idx][7].to_s << csv[idx][8].to_s << csv[idx][9].to_s,
+      birthday: Date.parse(csv[idx][10]),
+      password: "kinsen!"
     )
+  end
 end
