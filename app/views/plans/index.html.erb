@@ -1,10 +1,31 @@
-<% @page_title = "Seach plan" %>
+<% @page_title = "Search plan" %>
 <h1><%= @page_title %></h1>
-<%= form_tag :search_plans, method: :get, class: "search" do %>
+<%
+=begin%>
+ <%= form_tag :search_plans, method: :get, class: "search" do %>
     <%= text_field_tag "q", params[:q] %>
+    <%Type.all.each do |type| %>
+        <%= check_box_tag "#{type.name}" %><%=type.name%>
+    <% end %>
     <%= submit_tag "search" %>
-    <p>--------Checkbox here------------</p>
+<% end %> 
+<%
+=end
+%>
+
+<%= form_with url: search_plans_path, method: :get, local: true do |form| %>
+   
+    <%= form.number_field :guest_num %>
+    <%= form.date_select :date_start, {start_year: Time.current.year, end_year: Time.current.year + 1, use_month_numbers: true}%>
+    ～
+    <%= form.date_select :date_end, {start_year: Time.current.year, end_year: Time.current.year + 1, use_month_numbers: true}%>
+    <%= form.submit "Search" %>
 <% end %>
+
+<hr>
+
+
+
 <% if @plans.present? %>
     <table class="list">
         <% @plans.each do |plan| %>
@@ -15,3 +36,4 @@
         <% end %>
     </table>
 <% end %>
+<%= render "shared/check_params"%>

@@ -31,5 +31,8 @@ module Kinsen
     config.generators.system_tests = nil
 
     config.action_controller.permit_all_parameters = true
+    config.exceptions_app = ->(env) do
+      ErrorsController.action(:show).call(env)
+    end
   end
 end

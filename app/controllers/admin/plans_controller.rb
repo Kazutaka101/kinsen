@@ -1,4 +1,8 @@
 class Admin::PlansController < ApplicationController
+  def index
+  end
+
+
   def new
   end
 

@@ -1,20 +1,16 @@
-
-<%= @page_title = "Login" %>
-
-<%= form_tag :sessions, id:"login_form" do %>
+<% @page_title = "Login Required" %>
+<% if flash.alert %> 
+<p class = "alert"><%= flash.alert %></p><% end %>
+<%= form_tag :session, id: "login_form" do %>
     <div>
-        <label>Email address</label>
-        <input type = "text" name = "email">
+        <label>Email:</label>
+        <input type = "email" name = "email" >
     </div>
     <div>
-        <label>Password</label>
-        <input type = "password", name = "password">
+        <label>Password:</label>
+        <input type = "password" name = "password" >
     </div>
     <div>
-        <form action = <%= new_reservation_path %>>
-        <input type = "submit" value = "Login">
-    
+        <input type = "submit" value = "login">
     </div>
-    <%= link_to "Signup" , new_member_path %>
-    
 <% end %>

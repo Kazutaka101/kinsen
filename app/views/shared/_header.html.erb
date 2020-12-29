@@ -1,8 +1,1 @@
 <p id="kinsen">琴線</p>
-<% if current_member %>
-  <ul class="account-menu">
-    <%= menu_link_to current_member.name + "さん", mypage_path %>
-    <%= menu_link_to "ログアウト", :sessions,
-          method: :delete, data: { confirm: "ログアウトしますか？" } %>
-  </ul>
-<% end %>

@@ -1,33 +1,47 @@
 <% @page_title = "Reservation" %>
-
+<%= render "shared/errors", obj: @reservation %>
 <% if current_member %>
     <h1><%=@page_title %></h1>
     <table class = "attr">
+    提供期間
+    <%= @plan.plan_start %>
+    ～
+    <%= @plan.plan_end %>
     <%=form_for @reservation do |f| %>
         
         <tr>
             <th><%= f.label :plan_id%></th>
-            <td><%= f.text_field :plan_id, value: params[:plan_id] %></td>
+            <td><%= f.text_field :plan_id, value: @plan.id %></td>
         </tr>
         <tr>
             <th><%= f.label :member_id %>
             <td><%= f.text_field :member_id, value: session[:member_id] %></td>
         </tr>
         <tr>
-            <th><%= f.label :type_id %></th>
-            <td><%= f.text_field :type_id %></td>
+            <th><%= f.label "type_id" %></th>
+            <td><%= f.text_field :type_id, value: @plan.type_id %></td>
         </tr>
+        
+        <%
+=begin%>
+ <tr>
+            <th><%= f.label "dinner_id" %></th>
+            <td><%= f.text_field :dinner_id , value: @plan.dinner_id %></td>
+        </tr>  
+<%
+=end%>
+
         <tr>
             <th><%= f.label :guest_count %>
             <td><%= f.text_field :guest_count %>
         </tr>
         <tr>
             <th><%= f.label :date_start %></th>
-            <td><%= f.date_select :date_start, use_month_numbers: true, discard_year: true %></td>
+            <td><%= f.date_select :date_start, use_month_numbers: true,start_year: Time.current.year%></td>
         </tr>
         <tr>
             <th><%= f.label :date_end %></th>
-            <td><%= f.date_select :date_end, use_month_numbers: true, discard_year: true %></td>
+            <td><%= f.date_select :date_end, use_month_numbers: true, start_year: Time.current.year%></td>
         </tr>
         <tr>
             <th><%= f.label :morning %></th>
@@ -35,10 +49,11 @@
         </tr>
 </table>
 <div>
+    
     <%= f.submit "Reservation" %>
 </div>
 <% end %>
-<% else %>
-    <p>Please Login or Signup</p>
+
+    
 <% end %>
 
