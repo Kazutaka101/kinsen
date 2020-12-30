@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_22_081253) do
+ActiveRecord::Schema.define(version: 2020_12_29_090553) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "plan_id", null: false
@@ -50,8 +50,6 @@ ActiveRecord::Schema.define(version: 2020_12_22_081253) do
     t.date "plan_end", null: false
     t.integer "guest_max", null: false
     t.integer "guest_min", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["dinner_id"], name: "index_plans_on_dinner_id"
     t.index ["type_id"], name: "index_plans_on_type_id"
   end

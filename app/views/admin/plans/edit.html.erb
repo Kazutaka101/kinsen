@@ -1,2 +1,6 @@
-<h1>Admin::Plans#edit</h1>
-<p>Find me in app/views/admin/plans/edit.html.erb</p>
+<% @page_title = "admin: edit plan" %>
+
+<%= form_for [:admin, @plan] do |form | %>
+    <%= render "shared/plan_form", form: form %>
+    <div><%= form.submit %></div>
+<% end %>

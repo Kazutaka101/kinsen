@@ -1,7 +1,7 @@
 0.upto(9) do |idx|
   p idx
   Plan.create(
-    name: ("Plan" + idx.to_s),
+    name: ("Plan" + (idx + 1).to_s),
     dinner_id: (idx % 4) + 1,
     plan_start: "2020/12/01",
     plan_end: "2020/12/31",

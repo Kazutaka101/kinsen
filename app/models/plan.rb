@@ -1,7 +1,9 @@
 class Plan < ApplicationRecord
-    has_many :plan_types, dependent: :destroy
-    has_many :types, through: :plan_types
+    has_many :assignments, dependent: :destroy
+    has_many :types, through: :assignments
+    
     has_many :reservations
+
     belongs_to :dinner
     class << self
         def search(*query)

@@ -1,0 +1,29 @@
+<% @page_title = "Admin: Plans List"%>
+<table border = "1">
+    <thead>
+        <tr align = "center">
+            <th>Name</th>
+            <th>dinner_id</th>
+            <th>plan_start</th>
+            <th>plan_end</th>
+            <th>guest_max</th>
+            <th>guest_min</th>
+            <th>manegement</th>
+        </tr>
+    </thead>
+    <% @plans.each do |plan| %>
+        <tr>
+            <td align="center"><%= plan.name%></td>
+            <td align="center"><%= plan.dinner_id%></td>
+            <td align="center"><%= plan.plan_start%></td>
+            <td align="center"><%= plan.plan_end%></td>
+            <td align="center"><%= plan.guest_max%></td>
+            <td align="center"><%= plan.guest_min%></td>
+            <td align="center"><%=link_to "delete", [:admin, plan], method: :delete ,data: { confirm: "Are you sure delete this plan?"} %>
+            <%=link_to "edit",[:edit, :admin, plan]%>
+            <%=link_to "detail", [:admin, plan]%>
+            </td>
+        </tr>
+    <% end %>
+</table>
+

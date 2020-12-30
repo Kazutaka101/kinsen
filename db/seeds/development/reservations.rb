@@ -1,6 +1,6 @@
 0.upto(9) do |idx|
   Reservation.create(
-    plan_id: idx,
+    plan_id: idx + 1,
     type_id: idx % 2,
     member_id: idx % 3,
     guest_count: idx,
