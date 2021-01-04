@@ -31,12 +31,12 @@ end
 
 Member.create(
 	id: 9999,
-	name: "Yuuma",
+	name: "test_user",
 	gender: 1,
-	telephone: "08012980000",
-	email: "ne191020@senshu-u.jp",
+	telephone: "test",
+	email: "test@test.com",
 	address: "神奈川県 藤沢市 川名",
 	birthday: "2000-04-16",
-	password: "kinsenadmin!",
-	password_confirmation: "kinsenadmin!"
+	password: "kinsen!",
+	password_confirmation: "kinsen!"
 )

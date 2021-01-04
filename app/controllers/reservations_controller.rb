@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    #@reservation = Reservation.new(params[:reservation])
+    @reservation = Reservation.new
     @reservation.member_id = session[:member_id]
     @reservation.plan_id = params[:plan_id]
     @reservation.type_id = params[:type_id]
@@ -24,6 +24,7 @@ class ReservationsController < ApplicationController
 
   def show
     @reservations = Reservation.where(member_id: session[:member_id])
+    
   end
 
   def destroy

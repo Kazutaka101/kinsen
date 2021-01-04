@@ -1,61 +1,15 @@
-<% @page_title = "Reservation" %>
-<%= render "shared/errors", obj: @reservation %>
-<% if current_member %>
-    <h1><%=@page_title %></h1>
-    <table class = "attr">
-    提供期間
-    <%= @plan.plan_start %>
-    ～
-    <%= @plan.plan_end %>
-    <%=form_for @reservation do |f| %>
-        
-        <tr>
-            <th><%= f.label :plan_id%></th>
-            <td><%= f.text_field :plan_id, value: @plan.id %></td>
-        </tr>
-        <tr>
-            <th><%= f.label :member_id %>
-            <td><%= f.text_field :member_id, value: session[:member_id] %></td>
-        </tr>
-        <tr>
-            <th><%= f.label "type_id" %></th>
-            <td><%= f.text_field :type_id, value: @plan.type_id %></td>
-        </tr>
-        
+<h1>予約内容入力</h1>
 
-        <tr>
-            <th><%= f.label :guest_count %>
-            <td><%= f.text_field :guest_count %>
-        </tr>
-        <tr>
-            <th><%= f.label :date_start %></th>
-            <td><%= f.date_select :date_start, use_month_numbers: true,start_year: Time.current.year%></td>
-        </tr>
-        <tr>
-            <th><%= f.label :date_end %></th>
-            <td><%= f.date_select :date_end, use_month_numbers: true, start_year: Time.current.year%></td>
-        </tr>
-        <tr>
-            <th><%= f.label :morning %></th>
-            <td><%= f.check_box :morning %></td>
-        </tr>
-</table>
-<div>
-    
-    <%= f.submit "Reservation" %>
-</div>
+<%= form_tag :reservations , method: :create do %>
+  宿泊開始日：<%= date_field_tag :date_start, Date.today+1 %>
+  宿泊終了日：<%= date_field_tag :date_end, Date.today+2 %>
+  <% guestop = ["1",1],["2",2],["3",3],["4",4],["5",5],["6",6] %>
+  宿泊人数：<%= select_tag :guest_count, options_for_select(guestop,1)%>
+  <% typeop = ["露天風呂付き",1],["眺望",2],["和室",3] %>
+  部屋タイプ：<%= select_tag :type_id, options_for_select(typeop,1) %>
+  <% morningop = ["有",1],["無",0] %>
+  朝食の有無：<%= select_tag :morning, options_for_select(morningop,1)  %>
+  <%= hidden_field_tag :member_id, 1 %>
+  <%= hidden_field_tag :plan_id, params[:plan_id] %>
+  <%= submit_tag "予約"%>
 <% end %>
-
-    
-<% end %>
-
-<%= form_tag :reservations, method: :create do%>
-    宿泊開始日<%= date_field_tag :date_start, Date.today+1 %>
-    宿泊終了日<%= date_field_tag :date_end, Date.today+2 %>
-    人数　<%= select_tag :guest_count, options_for_select(guestop,1) %>
-    部屋タイプ<%= select_tag :type_id, options_for_select(typeop,1)%>
-    朝食<%= select_tag :morning, options_for_select(morningop,1)%>
-    
-
-<% end %>
-
