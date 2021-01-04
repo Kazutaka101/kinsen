@@ -1,2 +1,5 @@
-<h1>Admin::Dinners#new</h1>
-<p>Find me in app/views/admin/dinners/new.html.erb</p>
+<% @page_title = "Admin: Create new dinner" %>
+<%= form_for [:admin, @dinner] do |form|%>
+    <%= render "shared/dinner_form", form: form %>
+    <div><%= form.submit %></div>
+<% end %>

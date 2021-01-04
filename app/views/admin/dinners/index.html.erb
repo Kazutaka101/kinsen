@@ -1,2 +1,24 @@
-<h1>Admin::Dinners#index</h1>
-<p>Find me in app/views/admin/dinners/index.html.erb</p>
+<% @page_title = "admin: Dinner list"%>
+<%= link_to "create dinner", new_admin_dinner_path %>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Dish</th>
+            <td>manegement</th>
+        </tr>
+    </thead>
+<% @dinners.each do |dinner| %>
+<tr>
+    <td><%= dinner.name %></td>
+    <td><%= dinner.dish %></td>
+    <td align="center">
+        <%=link_to "detail", [:admin, dinner]%>
+        <%=link_to "delete", [:admin, dinner], method: :delete ,data: { confirm: "Are you sure delete this plan?"} %>
+    </td>
+</tr>
+<% end %>
+</table>
+
+
+    

@@ -1,8 +1,8 @@
 class Type < ApplicationRecord
-    has_many :assignments, dependent: :destroy
-    has_many :plans, through: :assingments
+    has_many :assignments
+    has_many :plans, through: :assignments
 
-    has_many :roomtypes, dependent: :destroy
+    has_many :roomtypes
     has_many :rooms, through: :roomtypes
 
 

@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2020_12_29_090553) do
   end
 
   create_table "plans", force: :cascade do |t|
-    t.integer "type_id", null: false
     t.string "name", null: false
     t.integer "dinner_id", null: false
     t.date "plan_start", null: false
@@ -51,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_12_29_090553) do
     t.integer "guest_max", null: false
     t.integer "guest_min", null: false
     t.index ["dinner_id"], name: "index_plans_on_dinner_id"
-    t.index ["type_id"], name: "index_plans_on_type_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -62,8 +60,6 @@ ActiveRecord::Schema.define(version: 2020_12_29_090553) do
     t.date "date_start", null: false
     t.date "date_end", null: false
     t.boolean "morning", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_reservations_on_member_id"
     t.index ["plan_id"], name: "index_reservations_on_plan_id"
     t.index ["type_id"], name: "index_reservations_on_type_id"
@@ -87,13 +83,7 @@ ActiveRecord::Schema.define(version: 2020_12_29_090553) do
   end
 
   create_table "types", force: :cascade do |t|
-    t.integer "plan_id"
     t.string "name", null: false
-    t.integer "roomtype_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["plan_id"], name: "index_types_on_plan_id"
-    t.index ["roomtype_id"], name: "index_types_on_roomtype_id"
   end
 
 end

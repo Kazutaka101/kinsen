@@ -16,6 +16,13 @@
         <th>Plan_end</th>
         <td><%=@plan.plan_end %></td>
     </tr>
+    <tr>
+        <th>manegemant</th>
+        <td><%= link_to "edit",[:edit, :admin, @plan] %><td>
+        <td><%= link_to "delete",[:admin, @plan], method: :delete, data: {confirm: "Are you sure delete this plan?"}%>
+    </tr>
+     
+
     
     
 </table>

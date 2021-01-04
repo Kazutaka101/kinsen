@@ -9,7 +9,7 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.date :date_end , null: false
       t.boolean :morning, null: false
 
-      t.timestamps
+     
     end
   end
 end

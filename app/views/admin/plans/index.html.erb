@@ -11,6 +11,7 @@
             <th>manegement</th>
         </tr>
     </thead>
+    <%= link_to "Create plan", new_admin_plan_path %>
     <% @plans.each do |plan| %>
         <tr>
             <td align="center"><%= plan.name%></td>
@@ -19,9 +20,12 @@
             <td align="center"><%= plan.plan_end%></td>
             <td align="center"><%= plan.guest_max%></td>
             <td align="center"><%= plan.guest_min%></td>
-            <td align="center"><%=link_to "delete", [:admin, plan], method: :delete ,data: { confirm: "Are you sure delete this plan?"} %>
-            <%=link_to "edit",[:edit, :admin, plan]%>
-            <%=link_to "detail", [:admin, plan]%>
+            <td align="center">
+                
+               
+                <%=link_to "detail", [:admin, plan]%>
+                <%=link_to "edit",[:edit, :admin, plan]%>
+                <%=link_to "delete", [:admin, plan], method: :delete ,data: { confirm: "Are you sure delete this plan?"} %>
             </td>
         </tr>
     <% end %>

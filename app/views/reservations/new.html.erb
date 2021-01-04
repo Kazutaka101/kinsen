@@ -22,14 +22,6 @@
             <td><%= f.text_field :type_id, value: @plan.type_id %></td>
         </tr>
         
-        <%
-=begin%>
- <tr>
-            <th><%= f.label "dinner_id" %></th>
-            <td><%= f.text_field :dinner_id , value: @plan.dinner_id %></td>
-        </tr>  
-<%
-=end%>
 
         <tr>
             <th><%= f.label :guest_count %>
@@ -55,5 +47,15 @@
 <% end %>
 
     
+<% end %>
+
+<%= form_tag :reservations, method: :create do%>
+    宿泊開始日<%= date_field_tag :date_start, Date.today+1 %>
+    宿泊終了日<%= date_field_tag :date_end, Date.today+2 %>
+    人数　<%= select_tag :guest_count, options_for_select(guestop,1) %>
+    部屋タイプ<%= select_tag :type_id, options_for_select(typeop,1)%>
+    朝食<%= select_tag :morning, options_for_select(morningop,1)%>
+    
+
 <% end %>
 

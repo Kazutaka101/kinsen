@@ -14,7 +14,7 @@
 %>
 
 <%= form_with url: search_plans_path, method: :get, local: true do |form| %>
-   
+    人数
     <%= form.number_field :guest_num %>
     <%= form.date_select :date_start, {start_year: Time.current.year, end_year: Time.current.year + 1, use_month_numbers: true}%>
     ～

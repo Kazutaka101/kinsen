@@ -1,2 +1,27 @@
-<h1>Admin::Dinners#show</h1>
-<p>Find me in app/views/admin/dinners/show.html.erb</p>
+<% @page_title = "admin:" +@dinner.name%>
+<table>
+    <tr>
+        <th>Name</th>
+        <td><%=@dinner.name %></td>
+    </tr>
+    <tr>
+        <th>Dish</th>
+        <td><%=@dinner.dish %></td>
+    </tr>
+    <tr>
+        <th>cost</th>
+        <td><%=@dinner.cost %></td>
+    </tr>
+    <tr>
+        <th>kcal</th>
+        <td><%=@dinner.kcal %></td>
+    </tr>
+    <tr>
+        <th>manegemant</th>
+        <td><%= link_to "delete",[:admin, @dinner], method: :delete, data: {confirm: "Are you sure delete this plan?"}%>
+    </tr>
+     
+
+    
+    
+</table>

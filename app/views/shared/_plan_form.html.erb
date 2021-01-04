@@ -4,6 +4,10 @@
         <td><%= form.text_field :name %></td>
     </tr>
     <tr>
+        <th><%= form.label :type_id %></th>
+        <td><%= form.number_field :type_id %></td>
+    </tr>
+    <tr>
         <th><%= form.label :dinner_id%></th>
         <td><%= form.number_field :dinner_id%></td>
     </tr>
@@ -23,3 +27,4 @@
         <th><%= form.label :guest_min %></th>
         <td><%= form.number_field :guest_min %></td>
     </tr>
+</table>

@@ -6,8 +6,14 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(params[:reservation])
-    
+    #@reservation = Reservation.new(params[:reservation])
+    @reservation.member_id = session[:member_id]
+    @reservation.plan_id = params[:plan_id]
+    @reservation.type_id = params[:type_id]
+    @reservation.guest_count = params[:guest_count]
+    @reservation.date_start = params[:date_start]
+    @reservation.date_end = params[:date_end]
+    @reservation.morning = params[:morning] == 1
     if @reservation.save
       redirect_to mypage_path, notice: "Done reservation"
     else
