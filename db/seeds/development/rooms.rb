@@ -118,12 +118,12 @@ Room.create(
 
 
 
-Room.create(
-	id: 999,
-	name: "フロント",
-	about: "寝るには厳しい椅子しかない",
-	cost: 1000
-)
+# Room.create(
+# 	id: 999,
+# 	name: "フロント",
+# 	about: "寝るには厳しい椅子しかない",
+# 	cost: 1000
+# )
 
 
 

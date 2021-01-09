@@ -45,7 +45,7 @@ class Reservation < ApplicationRecord
 
             if types.length == 0
                 rooms.each do |room|
-                    if room.types.ids == types
+                    if room.types.ids.sort == types
                         room_count = room_count + 1
                     end
                 end
@@ -53,7 +53,7 @@ class Reservation < ApplicationRecord
             
             if types.length == 1
                 rooms.each do |room|
-                    if room.types.ids == types
+                    if room.types.ids.sort == types
                         room_count = room_count + 1
                     end
                 end
@@ -62,14 +62,14 @@ class Reservation < ApplicationRecord
                 #if types[2,3]
                 # - "1&2 ,1&2&3 "
                 rooms.each do |room|
-                    if room.types.ids == types 
+                    if room.types.ids.sort == types 
                         room_count = room_count + 1
                     end
                 end
                 
             elsif types.length == 3
                 rooms.each do |room|
-                    if room.types.ids == types 
+                    if room.types.ids.sort == types 
                         room_count = room_count + 1
                     end
                 end
