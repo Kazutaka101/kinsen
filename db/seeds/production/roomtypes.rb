@@ -6,92 +6,89 @@
 # 	)
 # end
 
-Roomtype.create(
-	type_id: 99,
-	room_id: 999
-)
+# Roomtype.create(
+# 	type_id: 99,
+# 	room_id: 999
+# )
 
 # ======== 露天風呂あり ========
 
-Roomtype.create(
-	type_id: 1,   #露天風呂あり
-	room_id: 1
-)
-
-Roomtype.create(
-	type_id: 1,
-	room_id: 2
-)
-
-Roomtype.create(
-	type_id: 1,
-	room_id: 3
-)
-
-Roomtype.create(
-	type_id: 1,
-	room_id: 4
-)
 
 
-# ======== 和室 ========
 
-Roomtype.create(
-	type_id: 2,   #和室
-	room_id: 2
-)
-
-Roomtype.create(
-	type_id: 2,
-	room_id: 4
-)
-
-Roomtype.create(
-	type_id: 2,
-	room_id: 9
-)
-
-Roomtype.create(
-	type_id: 2,
-	room_id: 10
-)
-
-Roomtype.create(
-	type_id: 2,
-	room_id: 15
-)
 
 
 # ======== 川側 ========
 
 Roomtype.create(
-	type_id: 3,   #川側
+	type_id: 1,   #川側
 	room_id: 1
 )
 
 Roomtype.create(
-	type_id: 3,
+	type_id: 1,
+	room_id: 2
+)
+
+Roomtype.create(
+	type_id: 1,
+	room_id: 5
+)
+
+Roomtype.create(
+	type_id: 1,
+	room_id: 6
+)
+
+Roomtype.create(
+	type_id: 1,
+	room_id: 7
+)
+
+Roomtype.create(
+	type_id: 1,
+	room_id: 8
+)
+
+Roomtype.create(
+	type_id: 1,
+	room_id: 9
+)
+
+Roomtype.create(
+	type_id: 1,
+	room_id: 10
+)
+
+Roomtype.create(
+	type_id: 2,   #露天風呂あり
+	room_id: 1
+)
+
+Roomtype.create(
+	type_id: 2,
+	room_id: 2
+)
+
+Roomtype.create(
+	type_id: 2,
+	room_id: 3
+)
+
+Roomtype.create(
+	type_id: 2,
+	room_id: 4
+)
+# ======== 和室 ========
+
+Roomtype.create(
+	type_id: 3,   #和室
 	room_id: 2
 )
 
 Roomtype.create(
 	type_id: 3,
-	room_id: 5
-)
-
-Roomtype.create(
-	type_id: 3,
-	room_id: 6
-)
-
-Roomtype.create(
-	type_id: 3,
-	room_id: 7
-)
-
-Roomtype.create(
-	type_id: 3,
-	room_id: 8
+	room_id: 4
 )
 
 Roomtype.create(
@@ -103,6 +100,12 @@ Roomtype.create(
 	type_id: 3,
 	room_id: 10
 )
+
+Roomtype.create(
+	type_id: 3,
+	room_id: 15
+)
+
 
 
 
