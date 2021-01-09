@@ -18,7 +18,9 @@
             <td><%= member.telephone %></td>
             <td><%= member.email %></td>
             <td><%= member.birthday %></td>
-            <td><%= link_to "Check", admin_reservation_path(member)%>
+            <% if member.reservations.present? %>
+            <td><%= link_to "Check", admin_reservation_path(member)%></td>
+            <% end %>
         </tr>
     <%end%>
     </tbody>

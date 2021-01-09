@@ -1,4 +1,5 @@
 <% @page_title = "Check reservations" %>
+<h1>Check a reservation</h1>
 <% if @reservations.present? %>
 
   <% @reservations.each do |reservation|%>
@@ -6,6 +7,10 @@
         <tr>
             <th>Plan_id</th>
             <td><%= reservation.plan_id %></td>
+        </tr>
+        <tr>
+            <th>Type_id</th>
+            <td><%= reservation.type_id %></td>
         </tr>
         <tr>
             <th>guest_count</th>

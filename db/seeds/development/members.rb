@@ -30,7 +30,7 @@ end
 
 
 Member.create(
-	id: 9999,
+	
 	name: "test_user",
 	gender: 1,
 	telephone: "test",

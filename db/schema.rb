@@ -54,15 +54,14 @@ ActiveRecord::Schema.define(version: 2020_12_29_090553) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "plan_id", null: false
-    t.integer "type_id", null: false
     t.integer "member_id", null: false
     t.integer "guest_count", null: false
+    t.string "type_id"
     t.date "date_start", null: false
     t.date "date_end", null: false
     t.boolean "morning", null: false
     t.index ["member_id"], name: "index_reservations_on_member_id"
     t.index ["plan_id"], name: "index_reservations_on_plan_id"
-    t.index ["type_id"], name: "index_reservations_on_type_id"
   end
 
   create_table "rooms", force: :cascade do |t|

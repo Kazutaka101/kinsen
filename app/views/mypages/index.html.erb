@@ -1,22 +1,29 @@
+<h1>User Info</h1>
 <% if current_member %>
     <% if @member.present? %>
         <table>
             <tr>
+                <th>Name:</th>
                 <td><%= @member.name %></td>
             </tr>
             <tr>
+                <th>Sex:</th>
                 <td><%= @member.gender %>
             </tr>
             <tr>
+                <th>Phonenumber:</th>
                 <td><%= @member.telephone %>
             </tr>                
             <tr>
+                <th>Email:</th>
                 <td><%= @member.email %>
             </tr>
             <tr>
+                <th>Address:</th>
                 <td><%= @member.address %>
             </tr>                
             <tr>
+                <th>Birthday:</th>
                <td><%= @member.birthday %>
             </tr>
         </table>

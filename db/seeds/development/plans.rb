@@ -1,4 +1,4 @@
-0.upto(9) do |idx|
+1.upto(5) do |idx|
   p idx
   Plan.create(
     name: ("Plan" + idx.to_s),

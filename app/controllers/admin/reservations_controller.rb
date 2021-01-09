@@ -4,7 +4,7 @@ class Admin::ReservationsController < ApplicationController
   end
 
   def show
-    @reservations = Reservation.where(member_id: params[:id])
+    @reservations = Reservation.where(id: params[:id])
   end
 
   def edit

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show] do
     get "search", on: :collection
   end
-  resource :mypage do
+  resources :mypages do
     get "index", on: :collection
   end
 
@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     resources :members, only: [:index]
     resources :dinners, except: [:edit, :update]
     resources :reservations, except: [:new, :create]
-    resource :sessions, only: [:create, :destroy]
+    resource :session, only: [:create, :destroy]
+    resources :rooms, only: [:index]
   end
 
 

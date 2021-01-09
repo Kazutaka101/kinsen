@@ -7,4 +7,9 @@
 		<%= current_member.name + "さん" %>
 		<%= menu_link_to "Logout", :session, method: :delete, data: { confirm: "Are you sure logout? "} %>
 	<% end %>
+
+	<% if session[:member_id] == "admin" %>
+		<%= "admin mode" %>
+		<%= menu_link_to "Logout", admin_session_path, method: :delete, data: { confirm: "Are you sure logout? "}%>
+	<% end %>
 </div>

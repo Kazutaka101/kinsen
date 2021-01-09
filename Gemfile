@@ -55,3 +55,6 @@ group :development, :test do
 end
 # Use postgress for the production mode
 gem 'pg', group: :production
+
+#Use minitest
+gem "minitest-rails", "~> 5.2.0"

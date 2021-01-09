@@ -1,6 +1,6 @@
 <% @page_title = "Admin: Check reservation" %>
 <h1><%= @page_title %></h1>
-<% if @reservations.present? %>
+
 
   <% @reservations.each do |reservation|%>
     <table>
@@ -50,4 +50,3 @@
     <% end %> 
     <%= render "shared/check_params" %>
 
-<% end %>
