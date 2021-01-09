@@ -1,12 +1,28 @@
-0.upto(9) do |idx|
-  idx = idx + 1
-  Reservation.create(
-    plan_id: idx,
-    type_id: idx % 2,
-    member_id: idx % 8,
-    guest_count: idx,
-    date_start: Date.parse("2020-12-"+ idx),
-    date_end: Date.parse("2020-12-" + idx + 4),
-    morning: (idx % 2) == 0
-  )
-end
+Reservation.create(
+	plan_id: 1,
+	member_id: 1,
+	guest_count: 4,
+	type_id: "1,",
+	date_start: "2020-1-10",
+	date_end: "2020-1-13",
+	morning: true
+)
+
+Reservation.create(
+	plan_id: 1,
+	member_id: 1,
+	guest_count: 4,
+	type_id: "2,3,",
+	date_start: "2020-1-10",
+	date_end: "2020-1-13",
+	morning: true
+)
+Reservation.create(
+	plan_id: 1,
+	member_id: 1,
+	guest_count: 8,
+	type_id: "",
+	date_start: "2020-1-10",
+	date_end: "2020-1-13",
+	morning: true
+)
