@@ -76,14 +76,33 @@ class Reservation < ApplicationRecord
                 
             end
            
+            # Reservation.where(type_id: type_id).each do |re|
+            #     if date_start > re.date_start && date_end > re.date_end || re.date_start < date_start && re.date_end < date_end
+            #         occpaied_room = occpaied_room + 1
+            #     end
+            #     occpaied_room = occpaied_room + (re.guest_count / 4.to_f).ceil
+            # end
+
+            # Reservation.where(type_id: type_id).each do |re|
+            #     if re.where("date_start BETWEEN ? AND ? or date_end BETWEEN ? AND ?", date_start, date_end, date_start, date_end)
+            #         occpaied_room = occpaied_room + 1
+            #     end
+            #     occpaied_room = occpaied_room + (re.guest_count / 4.to_f).ceil
+            # end
+
             occpaied_room = 0
-            Reservation.where(type_id: type_id).each do |re|
-                if date_start > re.date_start && date_end > re.date_end || re.date_start < date_start && re.date_end < date_end
-                    occpaied_room = occpaied_room + 1
-                end
+            reserved = Reservation.where(type_id: type_id)
+            reserved = reserved.where("date_start BETWEEN ? AND ? or date_end BETWEEN ? AND ?", date_start, date_end, date_start, date_end)
+            p "-------------reserved----------------"
+            p reserved
+            reserved.each do |re|
+                p "------------re.guest_count"
+                p re
+                p (re.guest_count / 4.to_f).ceil
                 occpaied_room = occpaied_room + (re.guest_count / 4.to_f).ceil
+                p occpaied_room
             end
-           
+            p "-------------------------------------"
             
            
             vacant_room = room_count - occpaied_room

@@ -1,3 +1,28 @@
 <% @page_title = @plan.name %>
-<h1><%= @plan.name %></h1>
-<%= link_to "Reservation", new_reservation_path(plan_id: @plan.id) %>
+<h1><%= @plan.name %> 詳細</h1>
+	<div class="plan">
+		<h2 id="plan">概要</h2>
+		<ul>
+			<li>お夕食 : <%= @plan.dinner.name %></li>
+			<% @plan.types.each do |type| %>
+				<li><%= type.name %></li>
+			<% end %>
+		</ul>
+	</div>
+
+	<div class="plan">
+		<h2 id="plan">お夕食 <%= @plan.dinner.name %></h2>
+		<ul>
+			<li><%= safe_join("#{@plan.dinner.dish}".split("\n"),tag(:br)) %></li>
+			<li><%= "#{@plan.dinner.kcal} kcal" %></li>
+
+		</ul>
+
+	</div>
+    <h3>選べるお部屋</h3>
+	<% @plan.types.each do |type| %>
+		<div class="plan">
+			<p id="plan"><%= type.name %></p>
+		</div>	
+	<% end %>
+<%= link_to "予約画面へ", new_reservation_path(plan_id: @plan.id) %>

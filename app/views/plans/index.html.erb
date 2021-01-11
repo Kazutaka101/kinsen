@@ -14,8 +14,8 @@
 %>
 
 <%= form_with url: search_plans_path, method: :get, local: true do |form| %>
-    人数
-    <%= form.number_field :guest_num %>
+     <% guestop = ["1",1],["2",2],["3",3],["4",4],["5",5],["6",6] %>
+    宿泊人数：<%= select_tag :guest_num, options_for_select(guestop,1)%>
     <%= form.date_select :date_start, {start_year: Time.current.year, end_year: Time.current.year + 1, use_month_numbers: true}%>
     ～
     <%= form.date_select :date_end, {start_year: Time.current.year, end_year: Time.current.year + 1, use_month_numbers: true}%>
@@ -26,7 +26,7 @@
 
 
 
-<% if @plans.present? %>
+<% if @plans != nil %>
     <table class="list">
         <% @plans.each do |plan| %>
         <tr>

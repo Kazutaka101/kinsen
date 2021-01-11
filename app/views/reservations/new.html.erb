@@ -2,6 +2,11 @@
 <div class="contents"%>
   <p id="error"><%= flash.alert%>
 </div>
+<h3><%= @plan.name  %></h3>
+<p>提供期間:<%=@plan.plan_start%> ~ <%= @plan.plan_end %></p>
+
+
+
 <%= render "shared/errors", obj: @reservation %>
 <%= form_tag :reservations , method: :create do %>
   宿泊開始日：<%= date_field_tag :date_start, Date.today+1 %>
@@ -11,17 +16,46 @@
   <% morningop = ["有",1],["無",0] %>
   朝食の有無：<%= select_tag :morning, options_for_select(morningop,1)  %>
   <br>
-  部屋タイプ
-  <%= check_box_tag :roten, true, false %>
-  <%= label_tag :roten, "露天風呂付" %>
-  <%= check_box_tag :wasitsu, true, false %>
-  <%= label_tag :wasitsu, "和室" %>
-  <%= check_box_tag :kawa, true, false %>
-  <%= label_tag :kawa, "川側(景観抜群)" %>
+  <% type1 = nil
+     type2 = nil
+     type3 = nil
+    %>
+  <% @plan.types.ids.sort.each do |type|%>
+    <% if type == 1%>
+      <% type1 = true %>
+    <% end %>
+    <% if type == 2%>
+      <% type2 = true %>
+    <% end %>
+     <% if type == 3%>
+      <% type3 = true %>
+    <% end %>
+
+  <% end %>
+
+
+  
+  露天風呂の有無
+  <% rotenop = ["露天風呂有り",true],["露天風呂なし", false, disabled: type1] %>
+  <%= select_tag :roten, options_for_select(rotenop, 1)%>
+  和、洋室
+  <% wasitsuop = ["和室", true], ["洋室", false, disabled: type2] %>
+  <%= select_tag :wasitsu, options_for_select(wasitsuop, 1) %>
+  <% kawaop = ["川側(景観良好)", true],["山側",false, disabled: type3] %>
+  <%= select_tag :kawa, options_for_select(kawaop, 1) %>
+  
+  
+    
+
+
+  
   <hr>
   member_id
   <%= text_field_tag :member_id, session[:member_id] %>
   plan_id
   <%= text_field_tag :plan_id, params[:plan_id] %>
-  <%= submit_tag "予約"%>
+  types_ids
+   <%=@plan.types.ids %>
+ <%= submit_tag "予約", data: { confirm: "予約を確定しますか?" }%>
 <% end %>
+

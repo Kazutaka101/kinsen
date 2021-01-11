@@ -3,6 +3,7 @@
     <thead>
         <tr align = "center">
             <th>Name</th>
+            <th>Type_ids</th>
             <th>dinner_id</th>
             <th>plan_start</th>
             <th>plan_end</th>
@@ -15,6 +16,7 @@
     <% @plans.each do |plan| %>
         <tr>
             <td align="center"><%= plan.name%></td>
+            <td align="center"><%= plan.types.ids%> </td>
             <td align="center"><%= plan.dinner_id%></td>
             <td align="center"><%= plan.plan_start%></td>
             <td align="center"><%= plan.plan_end%></td>
